@@ -5,6 +5,7 @@ class TransformerTest < Minitest::Test
   def setup
     @db = Sequel.sqlite
     @db.extension :transformer
+    ActiveSupport::Notifications.notifier = ActiveSupport::Notifications.notifier.class.new
   end
 
   def test_transformer_yields_chain
