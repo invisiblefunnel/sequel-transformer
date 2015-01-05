@@ -93,19 +93,13 @@ class TransformerTest < Minitest::Test
     end
 
     assert_equal events.map(&:name), [
-      'sequel-transformer.chain.start',
-      'sequel-transformer.step.start',
-      'sequel-transformer.step.finish',
-      'sequel-transformer.step.start',
-      'sequel-transformer.step.finish',
-      'sequel-transformer.chain.finish'
+      'sequel-transformer.step',
+      'sequel-transformer.step',
+      'sequel-transformer.chain'
     ]
 
     assert_equal events.map(&:payload).map{|p|[p[:title],p[:description]]}, [
-      ['beginner', nil],
       ['beginner', 'hello'],
-      ['beginner', 'hello'],
-      ['beginner', 'world'],
       ['beginner', 'world'],
       ['beginner', nil]
     ]
