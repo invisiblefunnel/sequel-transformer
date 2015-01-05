@@ -30,8 +30,6 @@ DB = Sequel.sqlite
 DB.extension :transformer
 
 DB.transformer "Update latest widgets" do |chain|
-  chain.basic_logging!
-
   chain.step "ensure destination" do |db|
     db.create_table? :widgets do
       primary_key :id
